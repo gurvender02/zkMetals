@@ -1,26 +1,523 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
+/* ═══════════════════════════════════════════════════════════════════
+   ZEESHAN METAL RECYCLING — DESIGN SYSTEM
+   Theme: Industrial + Corporate
+   Version: 1.0.0
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Tailwind v4 Theme Tokens ─────────────────────────────────── */
 @theme inline {
+  /* ── Typography ────────────────────────────────────────────────── */
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "DM Serif Display", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* ── Semantic Color Aliases (from CSS vars) ────────────────────── */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* ── Brand Colors (direct utility access) ──────────────────────── */
+  --color-brand-navy: #0F172A;
+  --color-brand-navy-light: #1E293B;
+  --color-brand-navy-dark: #020617;
+  --color-brand-copper: #B87333;
+  --color-brand-copper-light: #D4945A;
+  --color-brand-copper-dark: #8B5A2B;
+  --color-brand-steel: #6B7280;
+  --color-brand-steel-light: #9CA3AF;
+  --color-brand-steel-dark: #4B5563;
+
+  /* ── Neutral Scale ─────────────────────────────────────────────── */
+  --color-neutral-50: #F9FAFB;
+  --color-neutral-100: #F3F4F6;
+  --color-neutral-200: #E5E7EB;
+  --color-neutral-300: #D1D5DB;
+  --color-neutral-400: #9CA3AF;
+  --color-neutral-500: #6B7280;
+  --color-neutral-600: #4B5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #1F2937;
+  --color-neutral-900: #111827;
+  --color-neutral-950: #030712;
+
+  /* ── Chart Colors ──────────────────────────────────────────────── */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* ── Sidebar ───────────────────────────────────────────────────── */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ── Border Radius System ──────────────────────────────────────── */
+  --radius-none: 0;
+  --radius-xs: 0.125rem;     /* 2px  — pill badges            */
+  --radius-sm: 0.25rem;      /* 4px  — inputs, small chips    */
+  --radius-md: 0.375rem;     /* 6px  — cards, buttons (base)  */
+  --radius-DEFAULT: 0.5rem;  /* 8px  — default component radi */
+  --radius-lg: 0.75rem;      /* 12px — modals, dialogs        */
+  --radius-xl: 1rem;         /* 16px — hero cards, panels     */
+  --radius-2xl: 1.5rem;      /* 24px — feature blocks         */
+  --radius-3xl: 2rem;        /* 32px — premium containers     */
+  --radius-full: 9999px;     /*        pills, avatars         */
+
+  /* ── Shadow System (Industrial) ────────────────────────────────── */
+  --shadow-xs: 0 1px 2px 0 rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-DEFAULT: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 8px 10px -6px rgba(15, 23, 42, 0.06);
+  --shadow-2xl: 0 25px 50px -12px rgba(15, 23, 42, 0.2);
+  --shadow-inner: inset 0 2px 4px 0 rgba(15, 23, 42, 0.05);
+  --shadow-copper: 0 4px 14px -2px rgba(184, 115, 51, 0.25);
+  --shadow-navy: 0 4px 14px -2px rgba(15, 23, 42, 0.35);
+  --shadow-elevated: 0 12px 40px -8px rgba(15, 23, 42, 0.12), 0 4px 12px -4px rgba(15, 23, 42, 0.06);
+
+  /* ── Spacing Scale (8px base grid) ─────────────────────────────── */
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0_5: 0.125rem;   /* 2px  */
+  --spacing-1: 0.25rem;      /* 4px  */
+  --spacing-1_5: 0.375rem;   /* 6px  */
+  --spacing-2: 0.5rem;       /* 8px  — base unit */
+  --spacing-2_5: 0.625rem;   /* 10px */
+  --spacing-3: 0.75rem;      /* 12px */
+  --spacing-3_5: 0.875rem;   /* 14px */
+  --spacing-4: 1rem;         /* 16px */
+  --spacing-5: 1.25rem;      /* 20px */
+  --spacing-6: 1.5rem;       /* 24px */
+  --spacing-7: 1.75rem;      /* 28px */
+  --spacing-8: 2rem;         /* 32px */
+  --spacing-9: 2.25rem;      /* 36px */
+  --spacing-10: 2.5rem;      /* 40px */
+  --spacing-12: 3rem;        /* 48px */
+  --spacing-14: 3.5rem;      /* 56px */
+  --spacing-16: 4rem;        /* 64px */
+  --spacing-20: 5rem;        /* 80px */
+  --spacing-24: 6rem;        /* 96px */
+  --spacing-28: 7rem;        /* 112px */
+  --spacing-32: 8rem;        /* 128px */
+  --spacing-36: 9rem;        /* 144px */
+  --spacing-40: 10rem;       /* 160px */
+  --spacing-44: 11rem;       /* 176px */
+  --spacing-48: 12rem;       /* 192px */
+  --spacing-52: 13rem;       /* 208px */
+  --spacing-56: 14rem;       /* 224px */
+  --spacing-60: 15rem;       /* 240px */
+  --spacing-64: 16rem;       /* 256px */
+  --spacing-72: 18rem;       /* 288px */
+  --spacing-80: 20rem;       /* 320px */
+  --spacing-96: 24rem;       /* 384px */
+
+  /* ── Section Spacing (semantic) ────────────────────────────────── */
+  --spacing-section-sm: 4rem;     /* 64px  — tight sections  */
+  --spacing-section: 6rem;        /* 96px  — default section */
+  --spacing-section-lg: 8rem;     /* 128px — hero / CTA      */
+  --spacing-section-xl: 10rem;    /* 160px — premium blocks  */
+
+  /* ── Container widths ──────────────────────────────────────────── */
+  --spacing-container-sm: 40rem;    /* 640px  */
+  --spacing-container-md: 48rem;    /* 768px  */
+  --spacing-container-lg: 64rem;    /* 1024px */
+  --spacing-container-xl: 80rem;    /* 1280px */
+  --spacing-container-2xl: 90rem;   /* 1440px */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ═══════════════════════════════════════════════════════════════════
+   CSS CUSTOM PROPERTIES — LIGHT THEME (default)
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+  /* ── Shadcn Semantic Tokens ────────────────────────────────────── */
+  --background: #FFFFFF;
+  --foreground: #111827;
+  --card: #FFFFFF;
+  --card-foreground: #111827;
+  --popover: #FFFFFF;
+  --popover-foreground: #111827;
+  --primary: #0F172A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #B87333;
+  --secondary-foreground: #FFFFFF;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent: #6B7280;
+  --accent-foreground: #FFFFFF;
+  --destructive: #DC2626;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #B87333;
+  --radius: 0.5rem;
+
+  /* ── Chart Tokens ──────────────────────────────────────────────── */
+  --chart-1: #B87333;
+  --chart-2: #0F172A;
+  --chart-3: #6B7280;
+  --chart-4: #D4945A;
+  --chart-5: #1E293B;
+
+  /* ── Sidebar Tokens ────────────────────────────────────────────── */
+  --sidebar: #F9FAFB;
+  --sidebar-foreground: #111827;
+  --sidebar-primary: #0F172A;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #F3F4F6;
+  --sidebar-accent-foreground: #0F172A;
+  --sidebar-border: #E5E7EB;
+  --sidebar-ring: #B87333;
+
+  /* ── ZK Brand Extended Tokens ──────────────────────────────────── */
+  --zk-surface-elevated: #FFFFFF;
+  --zk-surface-sunken: #F9FAFB;
+  --zk-surface-overlay: rgba(15, 23, 42, 0.6);
+  --zk-border-subtle: #F3F4F6;
+  --zk-border-strong: #D1D5DB;
+  --zk-text-primary: #111827;
+  --zk-text-secondary: #4B5563;
+  --zk-text-tertiary: #9CA3AF;
+  --zk-text-inverse: #FFFFFF;
+  --zk-copper-glow: rgba(184, 115, 51, 0.15);
+
+  /* ── Transition Tokens ─────────────────────────────────────────── */
+  --zk-transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --zk-transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --zk-transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  --zk-transition-spring: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Z-Index Scale ─────────────────────────────────────────────── */
+  --zk-z-dropdown: 1000;
+  --zk-z-sticky: 1020;
+  --zk-z-fixed: 1030;
+  --zk-z-modal-backdrop: 1040;
+  --zk-z-modal: 1050;
+  --zk-z-popover: 1060;
+  --zk-z-tooltip: 1070;
+  --zk-z-toast: 1080;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   DARK THEME
+   ═══════════════════════════════════════════════════════════════════ */
+.dark {
+  --background: #0F172A;
+  --foreground: #F9FAFB;
+  --card: #1E293B;
+  --card-foreground: #F9FAFB;
+  --popover: #1E293B;
+  --popover-foreground: #F9FAFB;
+  --primary: #F9FAFB;
+  --primary-foreground: #0F172A;
+  --secondary: #D4945A;
+  --secondary-foreground: #0F172A;
+  --muted: #1E293B;
+  --muted-foreground: #9CA3AF;
+  --accent: #9CA3AF;
+  --accent-foreground: #0F172A;
+  --destructive: #EF4444;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.15);
+  --ring: #D4945A;
+
+  --chart-1: #D4945A;
+  --chart-2: #F9FAFB;
+  --chart-3: #9CA3AF;
+  --chart-4: #B87333;
+  --chart-5: #374151;
+
+  --sidebar: #1E293B;
+  --sidebar-foreground: #F9FAFB;
+  --sidebar-primary: #D4945A;
+  --sidebar-primary-foreground: #0F172A;
+  --sidebar-accent: #374151;
+  --sidebar-accent-foreground: #F9FAFB;
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #D4945A;
+
+  --zk-surface-elevated: #1E293B;
+  --zk-surface-sunken: #020617;
+  --zk-surface-overlay: rgba(0, 0, 0, 0.7);
+  --zk-border-subtle: rgba(255, 255, 255, 0.06);
+  --zk-border-strong: rgba(255, 255, 255, 0.15);
+  --zk-text-primary: #F9FAFB;
+  --zk-text-secondary: #D1D5DB;
+  --zk-text-tertiary: #6B7280;
+  --zk-text-inverse: #0F172A;
+  --zk-copper-glow: rgba(212, 148, 90, 0.2);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   BASE LAYER
+   ═══════════════════════════════════════════════════════════════════ */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ── Heading defaults ──────────────────────────────────────────── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "DM Serif Display", ui-serif, Georgia, serif;
+    color: var(--zk-text-primary);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── Selection ─────────────────────────────────────────────────── */
+  ::selection {
+    background-color: var(--zk-copper-glow);
+    color: var(--zk-text-primary);
+  }
+
+  /* ── Focus visible ─────────────────────────────────────────────── */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ═══════════════════════════════════════════════════════════════════
+   UTILITY LAYER — Reusable Design System Classes
+   ═══════════════════════════════════════════════════════════════════ */
+@layer utilities {
+
+  /* ── Container ─────────────────────────────────────────────────── */
+  .zk-container {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .zk-container { padding-inline: 2rem; }
+  }
+
+  @media (min-width: 1024px) {
+    .zk-container { padding-inline: 4rem; }
+  }
+
+  /* ── Section Spacing ───────────────────────────────────────────── */
+  .zk-section {
+    padding-block: var(--spacing-section);
+  }
+
+  .zk-section-sm {
+    padding-block: var(--spacing-section-sm);
+  }
+
+  .zk-section-lg {
+    padding-block: var(--spacing-section-lg);
+  }
+
+  .zk-section-xl {
+    padding-block: var(--spacing-section-xl);
+  }
+
+  /* ── Gradient Backgrounds ──────────────────────────────────────── */
+  .zk-gradient-navy {
+    background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+  }
+
+  .zk-gradient-copper {
+    background: linear-gradient(135deg, #B87333 0%, #D4945A 100%);
+  }
+
+  .zk-gradient-hero {
+    background: linear-gradient(
+      180deg,
+      #0F172A 0%,
+      #1E293B 60%,
+      rgba(184, 115, 51, 0.08) 100%
+    );
+  }
+
+  .zk-gradient-radial {
+    background: radial-gradient(
+      ellipse at 50% 0%,
+      rgba(184, 115, 51, 0.12) 0%,
+      transparent 70%
+    );
+  }
+
+  /* ── Text Gradient ─────────────────────────────────────────────── */
+  .zk-text-gradient {
+    background: linear-gradient(135deg, #B87333 0%, #D4945A 50%, #B87333 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ── Glassmorphism ─────────────────────────────────────────────── */
+  .zk-glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px) saturate(1.5);
+    -webkit-backdrop-filter: blur(12px) saturate(1.5);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .dark .zk-glass {
+    background: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  /* ── Copper Accent Underline ───────────────────────────────────── */
+  .zk-underline-copper {
+    position: relative;
+  }
+
+  .zk-underline-copper::after {
+    content: "";
+    position: absolute;
+    bottom: -0.25rem;
+    left: 0;
+    width: 3rem;
+    height: 3px;
+    background: linear-gradient(90deg, #B87333, #D4945A);
+    border-radius: 9999px;
+  }
+
+  /* ── Industrial Divider ────────────────────────────────────────── */
+  .zk-divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      var(--border) 20%,
+      var(--border) 80%,
+      transparent 100%
+    );
+  }
+
+  /* ── Card Hover Lift ───────────────────────────────────────────── */
+  .zk-hover-lift {
+    transition: transform var(--zk-transition-base), box-shadow var(--zk-transition-base);
+  }
+
+  .zk-hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elevated);
+  }
+
+  /* ── Copper Border Glow ────────────────────────────────────────── */
+  .zk-border-glow {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .zk-border-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #B87333, transparent 50%, #D4945A);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   COMPONENT LAYER — Reusable Patterns
+   ═══════════════════════════════════════════════════════════════════ */
+@layer components {
+
+  /* ── Industrial Button ─────────────────────────────────────────── */
+  .zk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.025em;
+    border-radius: var(--radius-md);
+    transition:
+      background var(--zk-transition-fast),
+      color var(--zk-transition-fast),
+      box-shadow var(--zk-transition-fast),
+      transform var(--zk-transition-fast);
+    cursor: pointer;
+  }
+
+  .zk-btn:active {
+    transform: scale(0.98);
+  }
+
+  .zk-btn-primary {
+    background: #0F172A;
+    color: #FFFFFF;
+    padding: 0.75rem 2rem;
+  }
+
+  .zk-btn-primary:hover {
+    background: #1E293B;
+    box-shadow: var(--shadow-navy);
+  }
+
+  .zk-btn-copper {
+    background: linear-gradient(135deg, #B87333, #D4945A);
+    color: #FFFFFF;
+    padding: 0.75rem 2rem;
+  }
+
+  .zk-btn-copper:hover {
+    box-shadow: var(--shadow-copper);
+    filter: brightness(1.05);
+  }
+
+  .zk-btn-outline {
+    background: transparent;
+    color: #0F172A;
+    border: 2px solid #E5E7EB;
+    padding: 0.75rem 2rem;
+  }
+
+  .zk-btn-outline:hover {
+    border-color: #B87333;
+    color: #B87333;
+  }
 }

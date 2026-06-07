@@ -1,36 +1,330 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Zeeshan Metal Recycling Website
+
+A modern, high-performance industrial business website built for **Zeeshan Metal Recycling**, designed to generate supplier and buyer leads, establish trust, and provide a professional online presence.
+
+## Overview
+
+Zeeshan Metal Recycling specializes in purchasing industrial metal scrap and supplying processed recycled metal products to industries across India.
+
+This website serves as a lead-generation platform where:
+
+* Suppliers can submit scrap inquiries
+* Buyers can request metal products
+* Businesses can learn about the company's services
+* Potential clients can easily contact the company
+
+---
+
+## Features
+
+### Business-Focused Landing Page
+
+* Professional industrial design
+* Trust-building layout
+* Conversion-focused call-to-actions
+* Mobile responsive design
+
+### Supplier Lead Generation
+
+* Scrap inquiry form
+* Company information collection
+* Quantity and material details
+* Email notification system
+
+### Buyer Lead Generation
+
+* Product inquiry forms
+* Material requirement submission
+* Direct business contact workflow
+
+### Company Information
+
+* About Us
+* Business Process
+* Industries Served
+* Company Values
+* Why Choose Us
+
+### Gallery
+
+* Factory Images
+* Processing Facilities
+* Material Handling
+* Finished Products
+
+### Contact System
+
+* Contact form
+* WhatsApp integration
+* Email integration
+* Business information
+
+---
+
+## Technology Stack
+
+### Frontend
+
+* Next.js 16
+* TypeScript
+* React
+* Tailwind CSS
+* Shadcn UI
+
+### Forms & Validation
+
+* React Hook Form
+* Zod
+
+### Animations
+
+* Framer Motion
+* GSAP
+
+### Email Services
+
+* Resend
+
+### Deployment
+
+* Vercel
+
+---
+
+## Project Structure
+
+```text
+src
+├── app
+│   ├── about
+│   ├── buy-metals
+│   ├── contact
+│   ├── gallery
+│   ├── metals
+│   ├── process
+│   ├── sell-scrap
+│   └── api
+│
+├── components
+│   ├── layout
+│   ├── sections
+│   ├── forms
+│   └── ui
+│
+├── constants
+├── lib
+├── hooks
+├── types
+└── assets
+```
+
+---
+
+## Pages
+
+### Home
+
+* Hero Section
+* Company Statistics
+* What We Buy
+* What We Sell
+* Process Overview
+* Industries Served
+* Testimonials
+* Lead Generation CTA
+
+### About
+
+* Company Story
+* Mission
+* Vision
+* Values
+* Why Choose Us
+
+### Sell Scrap
+
+Supplier inquiry form for industrial scrap sellers.
+
+### Buy Metals
+
+Buyer inquiry form for companies looking to purchase processed metals.
+
+### Metals
+
+Detailed information about:
+
+* Copper Scrap
+* Silver Scrap
+* Brass Scrap
+* Aluminium Scrap
+* Steel Scrap
+
+### Process
+
+Complete recycling and supply workflow.
+
+### Gallery
+
+Company facilities and operations showcase.
+
+### Contact
+
+Business contact information and inquiry form.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Clone Repository
+
+```bash
+git clone https://github.com/your-username/zeeshan-metal.git
+```
+
+```bash
+cd zeeshan-metal
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Configure Environment Variables
+
+Create:
+
+```text
+.env.local
+```
+
+Add:
+
+```env
+RESEND_API_KEY=your_resend_api_key
+```
+
+---
+
+### Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+### Production Build
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Email Configuration
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project uses Resend for email delivery.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Required environment variable:
+
+```env
+RESEND_API_KEY=your_api_key
+```
+
+For production deployments:
+
+* Verify sending domain
+* Configure DNS records
+* Update sender email address
+
+---
+
+## SEO Features
+
+* Next.js Metadata API
+* Open Graph Tags
+* Twitter Cards
+* Sitemap
+* Robots.txt
+* Structured Data
+* Mobile Optimization
+
+---
+
+## Performance
+
+* Server Components
+* Static Generation
+* Optimized Images
+* Code Splitting
+* Lazy Loading
+* TypeScript Type Safety
+
+---
+
+## Future Enhancements
+
+Potential future upgrades:
+
+* Admin Dashboard
+* CRM Integration
+* Inventory Management
+* Lead Analytics
+* Customer Portal
+* Multi-language Support
+
+---
+
+## Deployment
+
+Recommended deployment platform:
+
+Vercel
+
+```bash
+npm install -g vercel
+```
+
+```bash
+vercel
+```
+
+---
+
+## Business Goal
+
+This website is designed to:
+
+* Increase supplier inquiries
+* Generate buyer leads
+* Improve business credibility
+* Enhance online visibility
+* Support long-term business growth
+
+---
+
+## License
+
+This project is proprietary and developed for Zeeshan Metal Recycling.
+
+All rights reserved.
+
+---
+
+## Contact
+
+**Zeeshan Metal Recycling**
+
+For business inquiries, partnerships, or support, please contact the company through the website contact form or official business channels.
